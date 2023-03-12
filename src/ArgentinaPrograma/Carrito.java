@@ -2,66 +2,35 @@ package ArgentinaPrograma;
 
 public class Carrito {
 	
-		// Propiedades
-	
-		private String cantidad;
-		private String precio;
-		private String productos;		
-		private Double precioTotal;
+				
 		
-		private static final Double minPrecio = 0.1;
-	
-		
-	
-			
-		
-		public Carrito(itemCarrito item1, itemCarrito item2, itemCarrito item3) {
-			
-			this.cantidad = Integer.toString(item1.getCantidad())+"\n"+ Integer.toString(item2.getCantidad())+"\n"
-					+ Integer.toString(item3.getCantidad())+"\n";
-			
-			this.precio= Double.toString((item1.getCantidad() * item1.getPrecio()))+"\n"
-					+Double.toString((item2.getCantidad() * item2.getPrecio()))+"\n"
-					+Double.toString((item3.getCantidad() * item3.getPrecio()))+"\n";
-			
-			this.productos= item1.getProductos()+"\n"+item2.getProductos()+"\n"+item3.getProductos();
-			
-		}
-
-
-
-		//Setters y Getters
-		public String getCantidad() {
+		public Integer[] getCantidad() {
 			return cantidad;
 		}
 
-		public String getPrecio() {
+		public double[] getPrecio() {
 			return precio;
 		}
 
-		public String getProductos() {
+		public String[] getProductos() {
 			return productos;
 		}
 
-		public Double getPrecioTotal(itemCarrito item1,itemCarrito item2, itemCarrito item3) {
-			precioTotal=(double) (+ item1.getPrecio()*item1.getCantidad() +item2.getPrecio()*item2.getCantidad() +item3.getPrecio()*item3.getCantidad());
+		public Double getPrecioTotal() {
+			precioTotal=(double) (+ item[0].getPrecio()*item[0].getCantidad() +item[1].getPrecio()*item[1].getCantidad() +item[2].getPrecio()*item[2].getCantidad());
 			return (double) precioTotal;
+			
 		}
 
-		public static Double getMinprecio() {
-			return minPrecio;
+		public itemCarrito[] getItem() {
+			return item;
 		}
 
-		public void setCantidad(String cantidad) {
-			this.cantidad = cantidad;
-		}
-
-		public void setPrecio(String precio) {
+		public void setPrecio(double[] precio) {
 			this.precio = precio;
 		}
 
-		public void setProductos(String productos) {
-			
+		public void setProductos(String[] productos) {
 			this.productos = productos;
 		}
 
@@ -70,9 +39,34 @@ public class Carrito {
 			this.precioTotal = precioTotal;
 		}
 
+		public void setItem(itemCarrito[] item) {
+			this.item = item;
+		}
 
-
+		private Integer cantidad[]= new Integer[3];
+		private double precio[]= new double[3];
+		private String productos[]= new String[3];		
+		private Double precioTotal;
+		private itemCarrito[] item = new itemCarrito[3];
 		
+		public itemCarrito[] traerCarrito(){	
+			return item;			
+		}	
+		
+		public Carrito(itemCarrito item1, itemCarrito item2, itemCarrito item3) {
+			item[0] = item1;
+			item[1]= item2;
+			item[2]= item3;
+		
+			for(int i=0 ;i<3 ;i++){
+				
+				this.cantidad[i] = item[i].getCantidad();
+				this.precio[i]=+(item[i].getCantidad() * item[i].getPrecio());
+				this.productos[i]= item[i].getProductos();
+			}
+		}
+
+
 		
 		
 		

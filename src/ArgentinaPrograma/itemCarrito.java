@@ -44,7 +44,7 @@ public class itemCarrito {
 		this.productos = producto;
 	}
 	
-	//Metodos
+	
 	
 	
 
